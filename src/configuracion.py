@@ -1,8 +1,12 @@
+import os
 from pathlib import Path
 
 RUTA_DATOS = Path(
-    r"C:\Users\santi\Downloads\2\Green_Services_Recursos_de_Prueba"
-)
+    os.getenv(
+        "OPTIMUSOPS_DATA_DIR",
+        str(Path(__file__).resolve().parent.parent / "data")
+    )
+).expanduser()
 
 ARCHIVOS_REQUERIDOS = [
     "01_Datos/ventas.csv",
